@@ -11,6 +11,7 @@
             --text-main: #1e293b;
             --text-muted: #64748b;
             --primary: #2563eb;
+            --primary-hover: #1d4ed8;
             --border: #e2e8f0;
         }
 
@@ -75,6 +76,86 @@
             padding-bottom: 8px;
         }
 
+        /* Стилі картки гри */
+        .game-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .game-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .game-icon {
+            width: 68px;
+            height: 68px;
+            border-radius: 16px;
+            object-fit: cover;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+        }
+
+        .game-meta h3 {
+            font-size: 18px;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .game-meta p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .btn-play {
+            background-color: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 10px 22px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-play:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-play:active {
+            transform: scale(0.97);
+        }
+
+        /* Контейнер плеєра (прихований за замовчуванням) */
+        #game-frame-wrapper {
+            display: none;
+            margin-top: 20px;
+            position: relative;
+            padding-bottom: 56.25%; /* Співвідношення 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background-color: #000;
+        }
+
+        #game-frame-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -101,10 +182,26 @@
         <p class="subtitle">Mobile Game & App Development</p>
     </header>
 
-    <div class="card" id="play-game">
-        <h2>Play Our Game</h2>
-        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
-            <iframe src="web-build/Build" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen></iframe>
+    <!-- Секція з грою -->
+    <div class="card" id="games">
+        <h2>Our Games</h2>
+        <div class="game-item">
+            <div class="game-info">
+                <!-- Якщо є окрема іконка гри, завантажте game_icon.png на GitHub, або залишиться logo_Fox.png -->
+                <img src="game_icon.png" alt="Hex Logic" class="game-icon" onerror="this.src='logo_Fox.png'">
+                <div class="game-meta">
+                    <h3>Hex Logic</h3>
+                    <p>Puzzle • Play in Browser</p>
+                </div>
+            </div>
+            <button class="btn-play" id="launch-btn" onclick="launchGame()">
+                ▶ Play Game
+            </button>
+        </div>
+
+        <!-- Вікно гри, яке розгортається після кліку -->
+        <div id="game-frame-wrapper">
+            <iframe id="game-iframe" src="" allowfullscreen></iframe>
         </div>
     </div>
 
@@ -125,6 +222,23 @@
         <p>© 2026 Fox Dev Games.</p>
     </footer>
 </div>
+
+<script>
+    function launchGame() {
+        const wrapper = document.getElementById('game-frame-wrapper');
+        const iframe = document.getElementById('game-iframe');
+        const btn = document.getElementById('launch-btn');
+
+        // Вказуємо шлях до білду гри
+        iframe.src = "web-build/index.html";
+        wrapper.style.display = "block";
+
+        // Змінюємо кнопку на інформаційний статус
+        btn.innerHTML = "✓ Loading...";
+        btn.style.opacity = "0.7";
+        btn.style.pointerEvents = "none";
+    }
+</script>
 
 </body>
 </html>
