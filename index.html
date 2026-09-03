@@ -123,35 +123,16 @@
             align-items: center;
             gap: 8px;
             transition: background 0.2s ease, transform 0.1s ease;
+            text-decoration: none;
         }
 
         .btn-play:hover {
             background-color: var(--primary-hover);
+            text-decoration: none;
         }
 
         .btn-play:active {
             transform: scale(0.97);
-        }
-
-        #game-frame-wrapper {
-            display: none;
-            margin-top: 20px;
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background-color: #000;
-        }
-
-        #game-frame-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
         }
 
         footer {
@@ -190,13 +171,9 @@
                     <p>Puzzle • Play in Browser</p>
                 </div>
             </div>
-            <button class="btn-play" id="launch-btn" onclick="launchGame()">
+            <a href="web-build/" target="_blank" rel="noopener noreferrer" class="btn-play">
                 ▶ Play Game
-            </button>
-        </div>
-
-        <div id="game-frame-wrapper">
-            <iframe id="game-iframe" src="" allowfullscreen></iframe>
+            </a>
         </div>
     </div>
 
@@ -217,21 +194,6 @@
         <p>© 2026 Fox Dev Games.</p>
     </footer>
 </div>
-
-<script>
-    function launchGame() {
-        const wrapper = document.getElementById('game-frame-wrapper');
-        const iframe = document.getElementById('game-iframe');
-        const btn = document.getElementById('launch-btn');
-
-        iframe.src = "web-build/";
-        wrapper.style.display = "block";
-
-        btn.innerHTML = "✓ Loading...";
-        btn.style.opacity = "0.7";
-        btn.style.pointerEvents = "none";
-    }
-</script>
 
 </body>
 </html>
