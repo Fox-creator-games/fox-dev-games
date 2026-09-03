@@ -76,7 +76,6 @@
             padding-bottom: 8px;
         }
 
-        /* Стилі картки гри */
         .game-item {
             display: flex;
             align-items: center;
@@ -134,12 +133,11 @@
             transform: scale(0.97);
         }
 
-        /* Контейнер плеєра (прихований за замовчуванням) */
         #game-frame-wrapper {
             display: none;
             margin-top: 20px;
             position: relative;
-            padding-bottom: 56.25%; /* Співвідношення 16:9 */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 10px;
@@ -182,7 +180,6 @@
         <p class="subtitle">Mobile Game & App Development</p>
     </header>
 
-    <!-- Секція з грою -->
     <div class="card" id="games">
         <h2>Our Games</h2>
         <div class="game-item">
@@ -198,7 +195,6 @@
             </button>
         </div>
 
-        <!-- Вікно гри, яке розгортається після кліку -->
         <div id="game-frame-wrapper">
             <iframe id="game-iframe" src="" allowfullscreen></iframe>
         </div>
@@ -228,7 +224,7 @@
         const iframe = document.getElementById('game-iframe');
         const btn = document.getElementById('launch-btn');
 
-        iframe.src = "web-build/";
+        iframe.src = "/fox-dev-games/web-build/index.html";
         wrapper.style.display = "block";
 
         btn.innerHTML = "✓ Loading...";
@@ -236,3 +232,6 @@
         btn.style.pointerEvents = "none";
     }
 </script>
+
+</body>
+</html>
