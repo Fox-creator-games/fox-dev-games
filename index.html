@@ -229,14 +229,11 @@
         const iframe = document.getElementById('game-iframe');
         const btn = document.getElementById('launch-btn');
 
-        // Вказуємо правильний шлях до білду гри
-        iframe.src = "./web-build/index.html";
+        iframe.src = "web-build/";
         wrapper.style.display = "block";
 
-        // Змінюємо кнопку на інформаційний статус
         btn.innerHTML = "✓ Loading...";
         btn.style.opacity = "0.7";
         btn.style.pointerEvents = "none";
     }
 </script>
-</html>
