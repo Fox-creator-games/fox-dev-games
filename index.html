@@ -83,6 +83,11 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .game-item:last-child {
+            margin-bottom: 0;
         }
 
         .game-info {
@@ -164,6 +169,8 @@
 
     <div class="card" id="games">
         <h2>Our Games</h2>
+        
+        <!-- Hex Logic -->
         <div class="game-item">
             <div class="game-info">
                 <img src="hex_logic_logo.jpg" alt="Hex Logic" class="game-icon" onerror="this.src='logo_Fox.png'">
@@ -173,6 +180,20 @@
                 </div>
             </div>
             <a href="web-build/" target="_blank" rel="noopener noreferrer" class="btn-play">
+                ▶ Play Game
+            </a>
+        </div>
+
+        <!-- Candy Panic -->
+        <div class="game-item">
+            <div class="game-info">
+                <img src="logo_Fox.png" alt="Candy Panic" class="game-icon" onerror="this.src='logo_Fox.png'">
+                <div class="game-meta">
+                    <h3>Candy Panic</h3>
+                    <p>Arcade • Play in Browser</p>
+                </div>
+            </div>
+            <a href="candy-panic-build/" target="_blank" rel="noopener noreferrer" class="btn-play">
                 ▶ Play Game
             </a>
         </div>
