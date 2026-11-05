@@ -141,6 +141,13 @@
             transform: scale(0.97);
         }
 
+        .btn-disabled {
+            background-color: #cbd5e1;
+            color: #64748b;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -176,26 +183,28 @@
                 <img src="hex_logic_logo.jpg" alt="Hex Logic" class="game-icon" onerror="this.src='logo_Fox.png'">
                 <div class="game-meta">
                     <h3>Hex Logic</h3>
-                    <p>Puzzle • Play in Browser</p>
+                    <p>Puzzle • Android</p>
                 </div>
             </div>
-            <a href="web-build/" target="_blank" rel="noopener noreferrer" class="btn-play">
-                ▶ Play Game
+            <a href="ТУТ_ВСТАВ_ПОСИЛАННЯ_НА_HEX_LOGIC_В_GOOGLE_PLAY" target="_blank" rel="noopener noreferrer" class="btn-play">
+                Google Play
             </a>
         </div>
 
+       <!-- Candy Panic -->
        <div class="game-item">
             <div class="game-info">
                 <img src="candy_panic_logo.png" alt="Candy Panic" class="game-icon" onerror="this.src='logo_Fox.png'">
                 <div class="game-meta">
                     <h3>Candy Panic</h3>
-                    <p>Arcade • Play in Browser</p>
+                    <p>Arcade • Coming Soon</p>
                 </div>
             </div>
-            <a href="https://fox-dev-game.itch.io/candy-panic" target="_blank" rel="noopener noreferrer" class="btn-play">
-                ▶ Play Game
-            </a>
+            <span class="btn-play btn-disabled">
+                Soon on Google Play
+            </span>
         </div>
+    </div>
 
     <div class="card" id="privacy">
         <h2>Privacy Policy</h2>
