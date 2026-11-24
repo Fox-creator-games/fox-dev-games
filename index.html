@@ -13,6 +13,8 @@
             --text-muted: #64748b;
             --primary: #2563eb;
             --primary-hover: #1d4ed8;
+            --beta-bg: #eff6ff;
+            --beta-border: #bfdbfe;
             --border: #e2e8f0;
         }
 
@@ -49,6 +51,7 @@
             border-radius: 50%;
             margin: 0 auto 16px;
             display: block;
+            object-fit: cover;
         }
 
         h1 {
@@ -77,17 +80,20 @@
             padding-bottom: 8px;
         }
 
+        .game-block {
+            margin-bottom: 20px;
+        }
+
+        .game-block:last-child {
+            margin-bottom: 0;
+        }
+
         .game-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        .game-item:last-child {
-            margin-bottom: 0;
         }
 
         .game-info {
@@ -109,6 +115,21 @@
             font-size: 18px;
             color: var(--text-main);
             margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .badge-dev {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            background-color: #fef3c7;
+            color: #b45309;
+            padding: 2px 8px;
+            border-radius: 6px;
         }
 
         .game-meta p {
@@ -127,6 +148,7 @@
             cursor: pointer;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             transition: background 0.2s ease, transform 0.1s ease;
             text-decoration: none;
@@ -141,11 +163,93 @@
             transform: scale(0.97);
         }
 
-        .btn-disabled {
-            background-color: #cbd5e1;
-            color: #64748b;
-            cursor: not-allowed;
-            pointer-events: none;
+        .btn-beta {
+            background-color: var(--beta-bg);
+            color: var(--primary);
+            border: 1px solid var(--beta-border);
+            padding: 10px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .btn-beta:hover {
+            background-color: #dbeafe;
+            border-color: #93c5fd;
+        }
+
+        .beta-box {
+            display: none;
+            margin-top: 14px;
+            padding: 16px;
+            background-color: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .beta-box.active {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .beta-box p {
+            font-size: 14px;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .beta-form {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .beta-input {
+            flex: 1;
+            min-width: 220px;
+            padding: 10px 14px;
+            font-size: 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .beta-input:focus {
+            border-color: var(--primary);
+        }
+
+        .btn-submit {
+            background-color: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .beta-status {
+            margin-top: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         footer {
@@ -169,7 +273,7 @@
 
 <div class="container">
     <header>
-        <img src="logo_Fox.png" alt="Logo" class="avatar" style="object-fit: cover;">
+        <img src="logo_Fox.png" alt="Logo" class="avatar">
         <h1>Fox Dev Game</h1>
         <p class="subtitle">Mobile Game & App Development</p>
     </header>
@@ -178,31 +282,54 @@
         <h2>Our Games</h2>
         
         <!-- Hex Logic -->
-        <div class="game-item">
-            <div class="game-info">
-                <img src="hex_logic_logo.jpg" alt="Hex Logic" class="game-icon" onerror="this.src='logo_Fox.png'">
-                <div class="game-meta">
-                    <h3>Hex Logic</h3>
-                    <p>Puzzle • Android</p>
+        <div class="game-block">
+            <div class="game-item">
+                <div class="game-info">
+                    <img src="hex_logic_logo.jpg" alt="Hex Logic" class="game-icon" onerror="this.src='logo_Fox.png'">
+                    <div class="game-meta">
+                        <h3>Hex Logic</h3>
+                        <p>Puzzle • Android</p>
+                    </div>
                 </div>
+                <a href="https://play.google.com/store/apps/details?id=com.foxdevgames.HexLogic&hl=uk" target="_blank" rel="noopener noreferrer" class="btn-play">
+                    Google Play
+                </a>
             </div>
-            <a href="https://play.google.com/store/apps/details?id=com.foxdevgames.HexLogic&hl=uk" target="_blank" rel="noopener noreferrer" class="btn-play">
-                Google Play
-            </a>
         </div>
 
-       <!-- Candy Panic -->
-       <div class="game-item">
-            <div class="game-info">
-                <img src="candy_panic_logo.png" alt="Candy Panic" class="game-icon" onerror="this.src='logo_Fox.png'">
-                <div class="game-meta">
-                    <h3>Candy Panic</h3>
-                    <p>Arcade • Coming Soon</p>
+        <!-- Candy Panic -->
+        <div class="game-block">
+            <div class="game-item">
+                <div class="game-info">
+                    <img src="candy_panic_logo.png" alt="Candy Panic" class="game-icon" onerror="this.src='logo_Fox.png'">
+                    <div class="game-meta">
+                        <h3>Candy Panic <span class="badge-dev">In Development</span></h3>
+                        <p>Arcade • Closed Beta</p>
+                    </div>
                 </div>
+                <button type="button" class="btn-beta" onclick="toggleBetaForm()">
+                    Join Closed Beta
+                </button>
             </div>
-            <span class="btn-play btn-disabled">
-                Soon on Google Play
-            </span>
+
+            <div class="beta-box" id="beta-box">
+                <p>Enter your <strong>Google Play Gmail</strong> address to get an invite link for closed testing:</p>
+                <form class="beta-form" id="beta-form" onsubmit="submitBetaForm(event)">
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    <input type="hidden" name="subject" value="New Closed Beta Tester - Candy Panic">
+                    
+                    <input 
+                        type="email" 
+                        name="email" 
+                        id="beta-email" 
+                        class="beta-input" 
+                        placeholder="yourname@gmail.com" 
+                        required
+                    >
+                    <button type="submit" class="btn-submit" id="beta-submit-btn">Send</button>
+                </form>
+                <div class="beta-status" id="beta-status"></div>
+            </div>
         </div>
     </div>
 
@@ -223,6 +350,61 @@
         <p>© 2026 Fox Dev Game.</p>
     </footer>
 </div>
+
+<script>
+    function toggleBetaForm() {
+        const box = document.getElementById('beta-box');
+        box.classList.toggle('active');
+        if (box.classList.contains('active')) {
+            document.getElementById('beta-email').focus();
+        }
+    }
+
+    async function submitBetaForm(event) {
+        event.preventDefault();
+        const form = document.getElementById('beta-form');
+        const btn = document.getElementById('beta-submit-btn');
+        const status = document.getElementById('beta-status');
+        const emailInput = document.getElementById('beta-email');
+
+        if (!emailInput.value.toLowerCase().trim().endsWith('@gmail.com')) {
+            status.style.display = 'block';
+            status.style.color = '#dc2626';
+            status.textContent = 'Please enter a valid @gmail.com address linked to Google Play.';
+            return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        status.style.display = 'none';
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+
+            if (result.success) {
+                status.style.display = 'block';
+                status.style.color = '#16a34a';
+                status.textContent = '✓ Request sent! We will add your email and send you the Google Play link soon.';
+                form.reset();
+            } else {
+                throw new Error('Submission failed');
+            }
+        } catch (error) {
+            status.style.display = 'block';
+            status.style.color = '#dc2626';
+            status.textContent = 'Something went wrong. Please email us directly at fxgamedev7@gmail.com.';
+        } finally {
+            btn.disabled = false;
+            btn.textContent = 'Send';
+        }
+    }
+</script>
 
 </body>
 </html>
